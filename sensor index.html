@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Sensor 0–10V Simple Demo</title>
+
+<style>
+
+body { font-family: Arial; background: #111; color: #fff; text-align: center; }
+
+.bar { height: 20px; background: #444; margin: 10px auto; width: 80%; border-radius: 5px; overflow: hidden; }
+
+.fill { height: 100%; background: lime; width: 0%; transition: width 0.2s; }
+
+label { display: block; margin-top: 15px; }
+
+footer { margin-top: 20px; font-size: 12px; opacity: 0.8; }
+
+</style>
+
+</head>
+
+<body>
+
+<h2>Sensor 0–10V Animation</h2>
+
+<label>Sensor Voltage (Vin): <span id="vinVal">0.0</span> V</label>
+
+<input type="range" id="vin" min="0" max="1" step="0.01" value="0">
+
+<div class="bar"><div id="vinBar" class="fill"></div></div>
+
+<label>Amplified Output (Vout): <span id="voutVal">0.0</span> V</label>
+
+<div class="bar"><div id="voutBar" class="fill" style="background: orange;"></div></div>
+
+<script>
+
+const gain = 10; // Amplifier gain
+
+const vinSlider = document.getElementById('vin');
+
+const vinVal = document.getElementById('vinVal');
+
+const voutVal = document.getElementById('voutVal');
+
+const vinBar = document.getElementById('vinBar');
+
+const voutBar = document.getElementById('voutBar');
+
+vinSlider.addEventListener('input', () => {
+
+  let Vin = parseFloat(vinSlider.value);
+
+  let Vout = Vin * gain;
+
+  vinVal.textContent = Vin.toFixed(2);
+
+  voutVal.textContent = Vout.toFixed(2);
+
+  vinBar.style.width = (Vin / 1 * 100) + '%';
+
+  voutBar.style.width = (Vout / 10 * 100) + '%';
+
+});
+
+</script>
+
+<footer>Designed by: Engr. Muhammad Raheel Nadeem</footer>
+
+</body>
+
+</html>
+<!-- partial -->
+  
+</body>
+</html>
